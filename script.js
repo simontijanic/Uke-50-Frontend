@@ -1,9 +1,7 @@
-// Frontend JavaScript (Inside a <script> tag in your HTML)
 fetch('http://10.12.14.121/')  // Your backend endpoint that returns JSON data
   .then(response => response.json())  // Parse the JSON response
   .then(data => {
-    // Get the container where you want to display the cards (e.g., an <ul> or <div>)
-    const container = document.querySelectorAll('.cards');
+    const container = document.querySelector('.cards');  // Use querySelector for a single container
 
     // Loop through each item in the data
     data.forEach(item => {
@@ -20,12 +18,12 @@ fetch('http://10.12.14.121/')  // Your backend endpoint that returns JSON data
             </div>
           </div>
         `;
-        
+
         // Create a new div element to insert the card HTML
         const cardElement = document.createElement('div');
         cardElement.innerHTML = html;
 
-        // Append the card to the container (it can be an <ul>, <div>, or any other container)
+        // Append the card to the container
         container.appendChild(cardElement);
     });
   })
