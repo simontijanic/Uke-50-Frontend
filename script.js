@@ -1,4 +1,4 @@
-fetch('http://10.12.14.121/')  // Your backend endpoint that returns JSON data
+fetch('http://10.12.14.121:8000/')  // Your backend endpoint that returns JSON data
   .then(response => response.json())  // Parse the JSON response
   .then(data => {
     const container = document.querySelector('.cards');  // Use querySelector for a single container
