@@ -1,4 +1,4 @@
-fetch('http://10.12.14.121:8000/') // Backend endpoint
+fetch('http://10.12.14.121:8000') // Backend endpoint
   .then(response => {
     console.log('Response:', response);  // Log the response object
     return response.json();
@@ -11,7 +11,7 @@ fetch('http://10.12.14.121:8000/') // Backend endpoint
       const html = `
         <div class="card">
           <div class="image">
-            <img src="images/iStock-479719152.jpg" alt="${item.name}">
+            <img src="/public/images/iStock-479719152.jpg" alt="${item.name}">
           </div>
           <div class="text">
             <h2>${item.team}</h2>
