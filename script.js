@@ -1,6 +1,19 @@
-fetch('http://10.12.14.121:8000') // Backend endpoint
+// Fetch the token from localStorage or wherever it is stored
+const token = localStorage.getItem('token');
+
+// Set up the fetch request
+fetch('http://10.12.14.121:8000', {
+  method: 'GET', // Assuming you're fetching data
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': token ? `Bearer ${token}` : '' // Include token if available
+  }
+})
   .then(response => {
     console.log('Response:', response);  // Log the response object
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
     return response.json();
   })
   .then(data => {
