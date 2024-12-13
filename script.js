@@ -3,7 +3,7 @@ fetch('http://10.12.14.121/')  // Your backend endpoint that returns JSON data
   .then(response => response.json())  // Parse the JSON response
   .then(data => {
     // Get the container where you want to display the cards (e.g., an <ul> or <div>)
-    const container = document.getElementById('cards-container');
+    const container = document.querySelectorAll('.cards');
 
     // Loop through each item in the data
     data.forEach(item => {
