@@ -1,30 +1,28 @@
-fetch('http://10.12.14.121:8000/')  // Your backend endpoint that returns JSON data
-  .then(response => response.json())  // Parse the JSON response
+fetch('http://10.12.14.121:8000/') // Backend endpoint
+  .then(response => {
+    console.log('Response:', response);  // Log the response object
+    return response.json();
+  })
   .then(data => {
-    const container = document.querySelector('.cards');  // Use querySelector for a single container
-
-    // Loop through each item in the data
+    console.log('Data received:', data);  // Log the data received from the backend
+    const container = document.querySelector('.cards');
+    
     data.forEach(item => {
-        // HTML string for each card
-        const html = `
-          <div class="card">
-            <div class="image">
-              <img src="images/iStock-479719152.jpg" alt="${item.name}">
-            </div>
-            <div class="text">
-              <h2>${item.team}</h2>
-              <h3>${item.name} - ${item.age} years old</h3>
-              <p>${item.description}</p>
-            </div>
+      const html = `
+        <div class="card">
+          <div class="image">
+            <img src="images/iStock-479719152.jpg" alt="${item.name}">
           </div>
-        `;
-
-        // Create a new div element to insert the card HTML
-        const cardElement = document.createElement('div');
-        cardElement.innerHTML = html;
-
-        // Append the card to the container
-        container.appendChild(cardElement);
+          <div class="text">
+            <h2>${item.team}</h2>
+            <h3>${item.name} - ${item.age} years old</h3>
+            <p>${item.description}</p>
+          </div>
+        </div>
+      `;
+      const cardElement = document.createElement('div');
+      cardElement.innerHTML = html;
+      container.appendChild(cardElement);
     });
   })
   .catch(error => console.error('Error fetching data:', error));
